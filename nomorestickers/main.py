@@ -12,8 +12,6 @@ EXTENSIONS_BLACKLIST = frozenset(('.tgs', '.webp', '.gif', '.mp4'))
 async def handle_message(event):
     if event.message.file:
         f = event.message.file
-        print(f.name)
-        print(f.ext)
         if f.ext in EXTENSIONS_BLACKLIST:
             await event.message.delete()
 
