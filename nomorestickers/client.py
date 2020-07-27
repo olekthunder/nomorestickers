@@ -9,3 +9,6 @@ def init_client(
     return TelegramClient(
         session="anon", api_hash=api_hash, api_id=api_id
     )
+
+
+CLIENT = init_client()
