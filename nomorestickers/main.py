@@ -48,7 +48,9 @@ def is_message_file_ext_forbidden(message) -> bool:
 
 
 def get_full_name(user) -> str:
-    return ' '.join([user.first_name, user.last_name])
+    if user.username:
+        return user.username
+    return ''
 
 
 async def delete_message(message, log_message):
@@ -70,7 +72,7 @@ async def processor():
             elif is_message_file_ext_forbidden(message):
                 reason_to_delete = message.file.ext
 
-            if reason_to_delete:
+            if reason_to_delete and random.randint(0, 20) == 7:
                 await delete_message(
                     message,
                     f'Deleted message from {get_full_name(message.sender)}'
